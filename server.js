@@ -1,5 +1,11 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var server = require('http').createServer(app);
+var root = __dirname + '/public/';
+
+app.use(express.static(root));
+
+
 
 
 server.listen(3000, function(){
@@ -9,5 +15,6 @@ server.listen(3000, function(){
 
 app.get('/', function(req,res) {
 
-  res.send('Hello World.');
+  res.sendFile(root+'home.html');
+
 });
